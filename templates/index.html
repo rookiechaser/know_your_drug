@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Know your Drug</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container my-3">
+        <h1>know your Drug</h1>
+    
+        <form method="POST" action="/">
+            <label for="keyword1">Search Drug Name:</label>
+            <div class="input-group mb-3">
+                <input type="text"id="keyword1" name="keyword1" class="form-control" placeholder="Drug Name" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+            <br>
+            <label for="keyword2">Search Condition:</label>
+            <input type="text"id="keyword2" name="keyword2" class="form-control" placeholder="Condition" aria-label="Username" aria-describedby="basic-addon1">
+            <br>
+            <button type="submit">Search</button>
+        </form>
+    
+        <div class="container mt-5">
+            <h2>Search Results:</h2>
+            <div class="row">
+                {% if data %}
+                    {% for row in data %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Drug: {{ row[3] }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Condition: {{ row[1] }}</h6>
+                                    <p class="card-text">Age: {{ row[0] }}</p>
+                                    <p class="card-text">Sex: {{ row[9] }}</p>
+                                    <p class="card-text">Ease of Use: {{ row[5] }}</p>
+                                    <p class="card-text">Effectiveness: {{ row[6] }}</p>
+                                    <p class="card-text">Satisfaction: {{ row[8] }}</p>
+                                    <p class="card-text">Reviews: {{ row[7] }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">No data to display.</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Add Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
